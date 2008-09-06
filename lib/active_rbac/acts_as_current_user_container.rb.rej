@@ -1,0 +1,42 @@
+***************
+*** 140,150 ****
+          elsif not session[:aacuc_data].nil? then
+            @aacuc_obj_state.current_user = 
+              ActsAsCurrentUserContainer::StaticMethods.unpersist(session[:aacuc_data])
+-           logger.debug "Unpersisted #{session[:aacuc_data].inspect} to #{@aacuc_obj_state.current_user}"
+  
+            @aacuc_obj_state.current_user
+          else
+-           logger.debug "Unpersisted nothing, returning anonymous user: #{aacuc_class_state.anonymous_user.inspect}"
+            aacuc_class_state.anonymous_user
+          end
+        end
+--- 140,150 ----
+          elsif not session[:aacuc_data].nil? then
+            @aacuc_obj_state.current_user = 
+              ActsAsCurrentUserContainer::StaticMethods.unpersist(session[:aacuc_data])
++           #logger.debug "Unpersisted #{session[:aacuc_data].inspect} to #{@aacuc_obj_state.current_user}"
+  
+            @aacuc_obj_state.current_user
+          else
++           # logger.debug "Unpersisted nothing, returning anonymous user: #{aacuc_class_state.anonymous_user.inspect}"
+            aacuc_class_state.anonymous_user
+          end
+        end
+***************
+*** 155,161 ****
+          @aacuc_obj_state.current_user = value
+          persisted_value = ActsAsCurrentUserContainer::StaticMethods.persist(value)
+          session[:aacuc_data] = persisted_value
+-         logger.debug "Setting session[:aacuc_data] to #{persisted_value.inspect}"
+          
+          value
+        end
+--- 155,161 ----
+          @aacuc_obj_state.current_user = value
+          persisted_value = ActsAsCurrentUserContainer::StaticMethods.persist(value)
+          session[:aacuc_data] = persisted_value
++         # logger.debug "Setting session[:aacuc_data] to #{persisted_value.inspect}"
+          
+          value
+        end
